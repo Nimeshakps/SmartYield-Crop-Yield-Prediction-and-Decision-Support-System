@@ -26,8 +26,6 @@ SmartYield is a machine learning-based decision support system that predicts soy
 ![XGBoost](https://img.shields.io/badge/XGBoost-ML-success)
 ![LightGBM](https://img.shields.io/badge/LightGBM-Gradient_Boosting-green)
 ![CatBoost](https://img.shields.io/badge/CatBoost-Gradient_Boosting-yellow)
-![Optuna](https://img.shields.io/badge/Optuna-Hyperparameter_Optimization-red)
-![License](https://img.shields.io/badge/License-MIT-blue)
 ![Status](https://img.shields.io/badge/Status-In_Progress-orange)
 
 <p align="center">
