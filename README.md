@@ -21,22 +21,21 @@ SmartYield is a machine learning-based decision support system that predicts soy
 
 ##  Technologies Used
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- XGBoost
-- LightGBM
-- CatBoost
-- Optuna
-- SHAP
-- Matplotlib
-- Seaborn
-- Joblib
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-orange?logo=scikitlearn)
+![XGBoost](https://img.shields.io/badge/XGBoost-ML-success)
+![LightGBM](https://img.shields.io/badge/LightGBM-Gradient_Boosting-green)
+![CatBoost](https://img.shields.io/badge/CatBoost-Gradient_Boosting-yellow)
+![Optuna](https://img.shields.io/badge/Optuna-Hyperparameter_Optimization-red)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![Status](https://img.shields.io/badge/Status-In_Progress-orange)
 
+<p align="center">
+<img src="https://skillicons.dev/icons?i=python,sklearn,git,github,vscode" />
+</p>
 ---
 
----
+
 
 ##  Machine Learning Pipeline
 
