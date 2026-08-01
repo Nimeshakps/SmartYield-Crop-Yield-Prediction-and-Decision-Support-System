@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+.env
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+
+# Model artifacts are placed manually and are typically large -- keep them out of git.
+model_factory/*
+!model_factory/.gitkeep
+!model_factory/README.md
