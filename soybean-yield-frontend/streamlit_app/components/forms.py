@@ -244,7 +244,7 @@ def render_weather_table(schema: dict, key_prefix: str) -> pd.DataFrame:
         use_container_width=True,
         key=f"{key_prefix}_weather_table",
         column_config={
-            col: st.column_config.NumberColumn(col, step=0.1, format="%.2f")
+            col: st.column_config.NumberColumn(col, step=0.1, format="%.4f")
             for col in default_df.columns
         },
     )
@@ -274,7 +274,7 @@ def render_soil_table(schema: dict, key_prefix: str) -> pd.DataFrame:
         disabled=["Variable", "Raw column"],
         key=f"{key_prefix}_soil_table",
         column_config={
-            "Value": st.column_config.NumberColumn("Value", step=0.1, format="%.2f"),
+            "Value": st.column_config.NumberColumn("Value", step=0.1, format="%.4f"),
         },
     )
     return edited
@@ -299,18 +299,23 @@ def render_soil_table(schema: dict, key_prefix: str) -> pd.DataFrame:
 #             key=f"{key_prefix}_region",
 #         )
 #     return int(obs_year), region
+
+
 def render_other_inputs(schema: dict, key_prefix: str):
     """Observation/prediction year + region. Region has zero effect on the prediction (it's
     excluded from the trained feature set) but engineer_features still requires a valid class."""
-    col1, col2 = st.columns(2)
-    # col1= st.columns(2)
-    with col1:
-        obs_year = st.number_input(
-            "Observation / prediction year",
-            min_value=1980, max_value=2100, value=2026, step=1,
-            key=f"{key_prefix}_obs_year",
-            help="Used to compute the 'years since baseline' trend feature.",
-        )
+
+    # col1, col2 = st.columns(2)
+    # # col1= st.columns(2)
+    # with col1:
+    #     obs_year = st.number_input(
+    #         "Observation / prediction year",
+    #         min_value=1980, max_value=2100, value=2026, step=1,
+    #         key=f"{key_prefix}_obs_year",
+    #         help="Used to compute the 'years since baseline' trend feature.",
+    #     )
+
+
     # with col2:
     #     region_classes = schema.get("region_classes") or ["(none available)"]
     #     region = st.selectbox(
@@ -318,7 +323,18 @@ def render_other_inputs(schema: dict, key_prefix: str):
     #         options=region_classes,
     #         key=f"{key_prefix}_region",
     #     )
-    region="Sri Lanka"
+
+    obs_year = st.number_input(
+        "Observation / prediction year",
+        min_value=1980, max_value=2100, value=2026, step=1,
+        key=f"{key_prefix}_obs_year",
+        help="Used to compute the 'years since baseline' trend feature.",
+    )
+
+    region_classes = schema.get("region_classes") or ["(none available)"]
+    region = region_classes[0]
+
+    # region="Sri Lanka"
     return int(obs_year), region
 
 
