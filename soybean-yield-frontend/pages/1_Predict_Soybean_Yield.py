@@ -79,6 +79,11 @@ hero(
 
 run_tag, model_name, schema = sidebar_run_model_selector()
 
+import os
+
+IMAGE_PATH = os.path.join(os.path.dirname(__file__), "soybean.jpg")
+
+st.sidebar.image(IMAGE_PATH, use_container_width=True, caption="")
 
 if not schema:
     st.warning(
@@ -127,7 +132,7 @@ st.markdown("---")
 # ---------------------------------------------------------
 
 if st.button(
-    "🌱 Predict Yield",
+    " Predict Yield",
     type="primary",
     use_container_width=True
 ):
@@ -190,7 +195,7 @@ if st.session_state.get("prediction_done"):
 
 
     if st.button(
-        "📈 Optimize Yield",
+        " Optimize Yield",
         type="secondary",
         use_container_width=True
     ):
@@ -254,7 +259,7 @@ if st.session_state.get("show_optimizer"):
 
 
     if st.button(
-        "🚀 Run Optimization",
+        " Run Optimization",
         type="primary",
         use_container_width=True
     ):

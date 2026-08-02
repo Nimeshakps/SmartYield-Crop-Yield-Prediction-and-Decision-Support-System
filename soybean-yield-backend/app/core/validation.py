@@ -15,13 +15,16 @@ import numpy as np
 import pandas as pd
 
 VALID_RANGES = {
-    "vapor_pressure": (0.0, 10.0),               # kPa -- vapor pressure cannot be negative
-    "soil_ph": (3.0, 10.0),                       # pH scale, realistic agricultural soil range
-    "cation_exchange_capacity": (0.0, 60.0),      # cmol(+)/kg soil
-    "total_nitrogen": (0.0, 20.0),                # g/kg soil
-    "coarse_fragments": (0.0, 20.0), 
-    "organic_carbon_stocks": (0.0, 20.0), 
-    "sand_content": (0.0, 20.0), 
+    "vapor_pressure": (0, 6000),               # kPa -- vapor pressure cannot be negative
+    "soil_ph": (30, 100),                       # pH scale, realistic agricultural soil range
+    "cation_exchange_capacity": (0, 600),      # cmol(+)/kg soil
+    "total_nitrogen": (0, 10000),                # g/kg soil
+    "coarse_fragments": (0, 400), 
+    "organic_carbon_stocks": (0, 150), 
+    "sand_content": (0, 950), 
+    "precipitation":(0,100),
+    "maximum_temperature":(-40,50),
+    "minimum_temperature":(-45,40),
     
 }
 

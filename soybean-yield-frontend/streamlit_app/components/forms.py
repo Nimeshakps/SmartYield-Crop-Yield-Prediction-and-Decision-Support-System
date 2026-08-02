@@ -244,7 +244,7 @@ def render_weather_table(schema: dict, key_prefix: str) -> pd.DataFrame:
         use_container_width=True,
         key=f"{key_prefix}_weather_table",
         column_config={
-            col: st.column_config.NumberColumn(col, step=0.1, format="%.4f")
+            col: st.column_config.NumberColumn(col, format="%.4f")
             for col in default_df.columns
         },
     )
@@ -274,7 +274,7 @@ def render_soil_table(schema: dict, key_prefix: str) -> pd.DataFrame:
         disabled=["Variable", "Raw column"],
         key=f"{key_prefix}_soil_table",
         column_config={
-            "Value": st.column_config.NumberColumn("Value", step=0.1, format="%.4f"),
+            "Value": st.column_config.NumberColumn("Value", format="%.4f"),
         },
     )
     return edited
