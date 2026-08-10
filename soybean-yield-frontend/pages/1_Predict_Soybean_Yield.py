@@ -68,7 +68,7 @@ st.set_page_config(
 inject_theme()
 
 hero(
-    "🌾 SmartYield — Predict Your Soybean Yield",
+    " SmartYield - Predict Your Soybean Yield",
     "Predict final harvest yield and optimize controllable factors for higher yield."
 )
 

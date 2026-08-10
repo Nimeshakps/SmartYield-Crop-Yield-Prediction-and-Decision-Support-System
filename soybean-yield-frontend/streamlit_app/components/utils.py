@@ -211,7 +211,7 @@ def render_recommendations(result: dict):
                 <div class="rec-row">
                     <b>{i}. {_with_unit(rec['variable'])}</b> {arrow} {rec['direction'].title()}
                     from <b>{rec['from_value']}</b> to <b>{rec['to_value']}</b>
-                    — gain of <b>+{rec['gain_kg_ha']:,.1f} kg/ha</b>
+                    - gain of <b>+{rec['gain_kg_ha']:,.1f} kg/ha</b>
                     (yield after this change: {rec['yield_after_kg_ha']:,.1f} kg/ha)
                 </div>
                 """,

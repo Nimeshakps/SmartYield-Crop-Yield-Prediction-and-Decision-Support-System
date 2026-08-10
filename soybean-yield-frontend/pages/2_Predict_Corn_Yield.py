@@ -10,7 +10,7 @@ from streamlit_app.theme import hero, inject_theme
 st.set_page_config(page_title="Predict Yield", page_icon="📈", layout="wide")
 inject_theme()
 hero(
-    "🌾 Predict Corn Yield",
+    " SmartYield - Predict Your Corn Yield",
     "Predict final harvest yield and optimize controllable factors for higher yield.",
 )
 

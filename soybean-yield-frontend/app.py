@@ -22,7 +22,7 @@ st.set_page_config(
 
 inject_theme()
 hero(
-    "Soybean Yield Prediction Dashboard",
+    "Yield Prediction Dashboard",
     "Predict harvest yield from raw weekly weather + soil readings, and discover which "
     "controllable factors could raise it further.",
 )
@@ -31,18 +31,18 @@ st.markdown(
     """
     <div class="section-card">
     <h3>👋 Welcome</h3>
-    <p>This dashboard talks to the FastAPI backend that wraps the trained soybean yield models.
+    <p>This dashboard talks to the FastAPI backend that wraps the trained yield models.
     Use the sidebar on each page to pick a <b>week-range run</b> (e.g. <code>weeks_14_20</code>)
     and a <b>trained model</b> (e.g. XGBoost, LightGBM, CatBoost, Stacking Ensemble).</p>
-    <p>Two phases are available, in the left navigation:</p>
+    <p>Two phases are available :</p>
     <ul>
-        <li><b>🌾 Predict Yield</b> — enter raw weekly weather + soil readings and get the
+        <li><b> Predict Yield</b> - enter raw weekly weather + soil readings and get the
         model's predicted final harvest yield.</li>
-        <li><b>📈 Optimize Yield</b> — starting from the same inputs, see which controllable
+        <li><b> Optimize Yield</b> - starting from the same inputs, see which controllable
         factors (vapor pressure, soil pH, cation exchange capacity, total nitrogen) to change,
         and by how much, to maximize predicted yield.</li>
     </ul>
-    <p>Any raw field can be left blank — it will be median-imputed automatically, exactly like
+    <p>Any raw field can be left blank - it will be median imputed automatically, exactly like
     the original notebook pipeline.</p>
     </div>
     """,
@@ -62,4 +62,4 @@ st.markdown(
 )
 st.code("export API_BASE_URL=http://localhost:8000\nstreamlit run streamlit_app/app.py", language="bash")
 
-st.info("👈 Use the sidebar navigation to open **Predict Yield** or **Optimize Yield**.")
+st.info("👈 Use the sidebar navigation to open **Predict Soyabean Yield** or **Predict Corn Yield**.")
