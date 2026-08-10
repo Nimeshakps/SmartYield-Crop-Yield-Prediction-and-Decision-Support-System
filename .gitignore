@@ -13,3 +13,5 @@ env/
 model_factory/*
 !model_factory/.gitkeep
 !model_factory/README.md
+
+model_factory_corn/*

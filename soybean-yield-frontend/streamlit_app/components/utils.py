@@ -181,6 +181,75 @@ def sidebar_run_model_selector():
     return run_tag, model_name, schema
 
 
+###########################################################################################
+def sidebar_run_model_selector_corn():
+    """Renders the sidebar controls for choosing a week-range run and a trained model.
+    Returns (run_tag, model_name, schema) or (None, None, None) if unavailable."""
+    st.sidebar.markdown("## 🌾 Model selection")
+
+    if not api_client.check_backend_alive():
+        st.sidebar.error(
+            "Can't reach the backend API. Make sure it's running and that API_BASE_URL is "
+            "set correctly (see streamlit_app/config.py)."
+        )
+        return None, None, None
+
+    try:
+        runs = api_client.get_runs_corn()
+    except ApiError as e:
+        st.sidebar.error(f"No models available yet: {e}")
+        return None, None, None
+
+    if not runs:
+        st.sidebar.warning("No runs found in model_factory yet.")
+        return None, None, None
+
+    run_tag = st.sidebar.selectbox("Week-range run", options=runs, key="sidebar_run_tag")
+
+    try:
+        models = api_client.get_models_corn(run_tag)
+    except ApiError as e:
+        st.sidebar.error(f"Couldn't list models for '{run_tag}': {e}")
+        return run_tag, None, None
+
+    if not models:
+        st.sidebar.warning(f"No trained models found for run '{run_tag}'.")
+        return run_tag, None, None
+
+    # model_name = st.sidebar.selectbox("Model", options=models, key="sidebar_model_name")
+    # model_name = st.sidebar.selectbox("Model", options=models, key="sidebar_model_name")
+    default_index = models.index(PREFERRED_DEFAULT_MODEL) if PREFERRED_DEFAULT_MODEL in models else 0
+    model_name = st.sidebar.selectbox(
+        "Model", options=models, index=default_index, key="sidebar_model_name"
+    )
+
+    try:
+        schema = api_client.get_schema_corn(run_tag, model_name)
+    except ApiError as e:
+        st.sidebar.error(f"Couldn't load schema: {e}")
+        return run_tag, model_name, None
+
+    # st.sidebar.markdown("---")
+    # st.sidebar.markdown("### 📊 Reported performance")
+    # if schema.get("mean_rmse_kg_ha") is not None:
+    #     st.sidebar.metric("CV RMSE", f"{schema['mean_rmse_kg_ha']:,.1f} kg/ha")
+    # if schema.get("mean_r2") is not None:
+    #     st.sidebar.metric("CV R²", f"{schema['mean_r2']:.3f}")
+    # st.sidebar.caption(
+    #     f"Growing season: weeks {schema['season_start_week']}–{schema['season_end_week']} · "
+    #     f"{schema.get('n_features', '?')} trained features"
+    # )
+    
+
+    return run_tag, model_name, schema
+
+
+
+
+
+
+
+
 def render_prediction_metrics(result: dict):
     col1, col2 = st.columns(2)
     with col1:
