@@ -2,7 +2,7 @@
 
 import streamlit as st
 
-from streamlit_app.api_client import ApiError, predict, optimize
+from streamlit_app.api_client import ApiError, predict, optimize, predict_corn
 from streamlit_app.components.forms import render_full_input_form
 from streamlit_app.components.utils import (
     render_prediction_metrics,
@@ -96,7 +96,7 @@ if st.button(
     ):
 
         try:
-            result = predict(
+            result = predict_corn(
                 run_tag,
                 model_name,
                 raw_row

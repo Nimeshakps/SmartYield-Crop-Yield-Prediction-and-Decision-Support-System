@@ -173,6 +173,15 @@ def predict(run_tag: str, model_name: str, raw_row: dict) -> dict:
     )
     return _handle_response(resp)
 
+def predict_corn(run_tag: str, model_name: str, raw_row: dict) -> dict:
+    """Phase 1: predict yield from raw inputs."""
+    resp = requests.post(
+        f"{API_BASE_URL}/api/predict_corn",
+        json={"run_tag": run_tag, "model_name": model_name, "raw_row": raw_row},
+        timeout=REQUEST_TIMEOUT_SECONDS,
+    )
+    return _handle_response(resp)
+
 
 def optimize(
     run_tag: str,

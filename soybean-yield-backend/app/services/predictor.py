@@ -11,7 +11,7 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
-from app.config import KG_HA_PER_BU_ACRE
+from app.config import KG_HA_PER_BU_ACRE, KG_HA_PER_BU_ACRE_CORN
 from app.core.feature_engineering import engineer_features
 from app.services.model_registry import LoadedModel
 
@@ -26,6 +26,15 @@ def predict_from_raw_row(loaded: LoadedModel, raw_row: dict) -> dict:
         "prediction_bu_acre": round(prediction_bu_acre, 2),
     }
 
+def predict_from_raw_row_corn(loaded: LoadedModel, raw_row: dict) -> dict:
+    """Runs one raw input row through engineer -> cluster -> impute -> predict, exactly as
+    Step 6 of the inference notebook does, and returns kg/ha + bu/acre predictions."""
+    prediction_kg_ha = predict_yield(loaded, raw_row)
+    prediction_bu_acre = prediction_kg_ha / KG_HA_PER_BU_ACRE_CORN
+    return {
+        "prediction_kg_ha": round(prediction_kg_ha, 2),
+        "prediction_bu_acre": round(prediction_bu_acre, 2),
+    }
 
 def predict_yield(loaded: LoadedModel, raw_row_dict: dict) -> float:
     """Core reusable prediction function -- identical logic to the notebook's `predict_yield`,

@@ -90,3 +90,4 @@ API_VERSION = "1.0.0"
 
 # Target unit conversion used throughout the training/inference pipeline
 KG_HA_PER_BU_ACRE = 67.25
+KG_HA_PER_BU_ACRE_CORN = 62.77
